@@ -10,8 +10,6 @@ import com.example.http.verification.client.clients.VerificationService;
 import com.example.http.verification.client.dto.VerificationRequest;
 import com.example.http.verification.client.dto.VerificationResult;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.mock.web.MockMultipartFile;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.registry.HttpServiceProxyRegistry;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 /**
@@ -31,11 +28,8 @@ public class VerificationClientController {
 
 	private final VerificationService verificationService;
 
-	private final VerificationService verificationServiceFromRegistry;
-
-	public VerificationClientController(VerificationService verificationService, VerificationService verificationServiceFromRegistry) {
+	public VerificationClientController(VerificationService verificationService) {
 		this.verificationService = verificationService;
-		this.verificationServiceFromRegistry = verificationServiceFromRegistry;
 	}
 
 	@RequestMapping("/count")
@@ -65,7 +59,7 @@ public class VerificationClientController {
 
 	@GetMapping("/test2")
 	String test2() {
-		return verificationServiceFromRegistry.test();
+		return verificationService.test();
 	}
 
 	@PostMapping()
