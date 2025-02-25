@@ -10,8 +10,6 @@ import com.example.http.verification.client.clients.VerificationService;
 import com.example.http.verification.client.dto.VerificationRequest;
 import com.example.http.verification.client.dto.VerificationResult;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.mock.web.MockMultipartFile;
@@ -19,7 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.registry.HttpServiceProxyRegistry;
+import org.springframework.web.client.support.RestClientHttpServiceProxyRegistry;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 /**
@@ -29,13 +27,13 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 @RequestMapping
 public class VerificationClientController {
 
+	private final RestClientHttpServiceProxyRegistry interfaceClientsRegistry;
 	private final VerificationService verificationService;
 
-	private final VerificationService verificationServiceFromRegistry;
-
-	public VerificationClientController(VerificationService verificationService, VerificationService verificationServiceFromRegistry) {
-		this.verificationService = verificationService;
-		this.verificationServiceFromRegistry = verificationServiceFromRegistry;
+	public VerificationClientController(RestClientHttpServiceProxyRegistry interfaceClientsRegistry) {
+		this.interfaceClientsRegistry = interfaceClientsRegistry;
+//		// FIXME: add to API
+//		this.verificationService = interfaceClientsRegistry.getProxy("verificationClient2", VerificationService.class);
 	}
 
 	@RequestMapping("/count")

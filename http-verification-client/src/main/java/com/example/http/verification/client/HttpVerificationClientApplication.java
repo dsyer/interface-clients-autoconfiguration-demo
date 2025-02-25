@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.interfaceclients.InterfaceClientGroup;
 
 @SpringBootApplication
-@InterfaceClientGroup(value = "verificationClient", baseUrl = "http://localhost:8081", basePackageClasses = VerificationService.class)
+@InterfaceClientGroup(value = "verificationClient2", baseUrl = "http://localhost:8081", basePackageClasses = VerificationService.class)
 @InterfaceClientGroup(value = "verificationClient", baseUrl = "http://localhost:8081", httpServiceTypes = VerificationService.class)
 public class HttpVerificationClientApplication {
 
