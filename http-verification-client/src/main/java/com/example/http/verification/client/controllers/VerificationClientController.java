@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.registry.HttpServiceProxyRegistry;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 /**
@@ -28,8 +29,9 @@ public class VerificationClientController {
 
 	private final VerificationService verificationService;
 
-	public VerificationClientController(VerificationService verificationService) {
-		this.verificationService = verificationService;
+	public VerificationClientController(HttpServiceProxyRegistry<?> interfaceClientsRegistry) {
+		this.verificationService = interfaceClientsRegistry.getClientProxy("programmaticVerificationClientGroup",
+				VerificationService.class);
 	}
 
 	@RequestMapping("/count")

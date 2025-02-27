@@ -1,6 +1,6 @@
 package com.example.http.verification.client.config;
 
-import com.example.http.verification.client.clients.PersonService;
+import com.example.http.verification.client.clients.VerificationService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class UserInterfaceClientsConfig {
 		RestClientHttpServiceProxyRegistry proxyRegistry = RestClientHttpServiceProxyRegistry.create(restClientBuilder);
 		proxyRegistry.registerGroup("programmaticVerificationClientGroup",
 				group -> {
-					group.addHttpServiceTypes(PersonService.class);
+					group.addHttpServiceTypes(VerificationService.class);
 					group.baseUrl("http://localhost:8081/");
 				});
 		return proxyRegistry;
