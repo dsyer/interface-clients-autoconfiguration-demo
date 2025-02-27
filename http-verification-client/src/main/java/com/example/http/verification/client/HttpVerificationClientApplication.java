@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.interfaceclients.http.InterfaceClientGroup;
 
 @SpringBootApplication
-@InterfaceClientGroup(value = "verificationClient")
+@InterfaceClientGroup
 public class HttpVerificationClientApplication {
 
 	public static void main(String[] args) {

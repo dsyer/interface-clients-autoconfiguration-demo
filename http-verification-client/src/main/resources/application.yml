@@ -4,7 +4,7 @@ spring:
   interface-clients:
     http:
       client-groups:
-        verificationClient:
+        default:
           base-url: http://localhost:8081
   application:
     name: http-verification-client
